@@ -29,4 +29,4 @@ chrome-user-data
 .idea
 *.iml
 .vscode
-dist/
+/dist
