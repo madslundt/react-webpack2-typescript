@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {Input} from './Input/Input';
-import {List, TodoListProperty, IItem} from './List/List';
+import {Input} from './Input';
+import {List, TodoListProperty, IItem} from './List';
 
 export interface TodoState {
   items : IItem[]

@@ -24,6 +24,6 @@ export class Counter extends React.Component <void, {number : number}> {
   }
 
   render() {
-    return (<RaisedButton label={this.state.number}/>);
+    return <RaisedButton label={this.state.number} />;
   }
 }

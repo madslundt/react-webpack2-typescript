@@ -24,7 +24,7 @@ export class Input extends React.Component <TodoInputProperty, TodoInputState> {
       .bind(this)
   }
 
-  private submitValue() {
+  submitValue() {
     this
       .props
       .onSubmit(this.state.value);
@@ -47,11 +47,13 @@ export class Input extends React.Component <TodoInputProperty, TodoInputState> {
   }
 
   render() {
-    return (<TextField
-      type="text"
-      name="todoInput"
-      value={this.state.value}
-      onKeyDown={this.onKeyDown}
-      onChange={this.onChange}/>);
+    return (
+      <TextField
+        type="text"
+        name="todoInput"
+        value={this.state.value}
+        onKeyDown={this.onKeyDown}
+        onChange={this.onChange} />
+      );
   }
 }
