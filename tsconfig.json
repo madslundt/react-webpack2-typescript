@@ -1,15 +1,15 @@
 {
-    "compilerOptions": {
-        "baseUrl": ".",
-        "noEmit": true,
-        "module": "commonjs",
-        "target": "es5",
-        "jsx": "react",
-        "noImplicitAny": true,
-        "strictNullChecks": true,
-        "sourceMap": true
-    },
-    "include": [
-        "src/**/*"
-    ]
+  "compilerOptions": {
+    "baseUrl": ".",
+    "noEmit": true,
+    "module": "commonjs",
+    "target": "es5",
+    "jsx": "react",
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "sourceMap": true
+  },
+  "include": [
+    "src/**/*"
+  ]
 }

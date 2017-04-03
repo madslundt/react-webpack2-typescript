@@ -11,22 +11,21 @@ import {green100, green500, green700} from 'material-ui/styles/colors';
 injectTapEventPlugin();
 
 const muiTheme = getMuiTheme({
-    palette: {
-        primary1Color: green500,
-        primary2Color: green700,
-        primary3Color: green100
-    }
+  palette: {
+    primary1Color: green500,
+    primary2Color: green700,
+    primary3Color: green100
+  }
 });
 
-export default class App extends React.Component < void,
-void > {
-    render() {
-        return (
-            <MuiThemeProvider muiTheme={muiTheme}>
-                <Router>
-                    <Route path="/" component={Todo} />
-                </Router>
-            </MuiThemeProvider>
-        );
-    }
+export default class App extends React.Component <void, void> {
+  render() {
+    return (
+      <MuiThemeProvider muiTheme={muiTheme}>
+        <Router>
+          <Route path="/" component={Todo}/>
+        </Router>
+      </MuiThemeProvider>
+    );
+  }
 }
