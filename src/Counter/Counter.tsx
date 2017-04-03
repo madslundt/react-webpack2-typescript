@@ -7,10 +7,12 @@ export class Counter extends React.Component<void, { number: number }> {
         this.state = {
             number: 0
         };
+
+        this.increment = this.increment.bind(this)
     }
 
     componentDidMount() {
-        setInterval(this.increment.bind(this), 1000);
+        setInterval(this.increment(), 1000);
         // setInterval(() => {
         //     this.increment();
         // }, 1000);

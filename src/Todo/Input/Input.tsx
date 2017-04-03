@@ -15,6 +15,9 @@ export class Input extends React.Component <TodoInputProperty, TodoInputState> {
         this.state = {
             value: ''
         };
+
+        this.onKeyDown = this.onKeyDown.bind(this)
+        this.onChange  = this.onChange.bind(this)
     }
 
     private submitValue() {
@@ -45,8 +48,8 @@ export class Input extends React.Component <TodoInputProperty, TodoInputState> {
                 type="text"
                 name="todoInput"
                 value={this.state.value}
-                onKeyDown={this.onKeyDown.bind(this)}
-                onChange={this.onChange.bind(this)}
+                onKeyDown={this.onKeyDown}
+                onChange={this.onChange}
             />
         );
     }
