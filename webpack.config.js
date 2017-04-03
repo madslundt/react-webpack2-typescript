@@ -15,6 +15,8 @@ const isHotMode = process.argv.find((a) => {
     return a.indexOf("--hot") >= 0;
 });
 
+console.log(isProduction, process.env.NODE_ENV);
+
 const hotPort = 8080;
 
 let config = {
@@ -70,9 +72,18 @@ if (isHotMode) {
 }
 
 if (isDevelopment) {
-    // config.module.rules.push({ test: /\.css$/, use: ["style", "css" ] });
-    // config.module.rules.push({ test: /\.less$/, use: ["style", "css", "less"] });
-    config.module.rules.push({ test: /\.(png|woff|woff2|eot|ttf|svg|gif)(\?.+)?(#.+)?$/, use: ["url-loader?limit=100000"] });
+    config.module.rules.push({
+        test: /\.css$/,
+        use: ["style", "css"]
+    });
+    config.module.rules.push({
+        test: /\.scss$/,
+        use: ["style", "css", "sass"]
+    });
+    config.module.rules.push({
+        test: /\.(png|woff|woff2|eot|ttf|svg|gif)(\?.+)?(#.+)?$/,
+        use: ["url-loader?limit=100000"]
+    });
 
     config.devServer = {
         publicPath: "http://localhost:" + hotPort + "/dist/",
@@ -88,17 +99,32 @@ if (isDevelopment) {
 if (isProduction) {
     config.output.filename = "[name].[chunkhash].js";
 
-    // config.module.rules.push({ test: /\.css$/, use: ExtractTextPlugin.extract("style", ["css"]) });
-    // config.module.rules.push({ test: /\.less$/, use: ExtractTextPlugin.extract("style", ["css", "less"]) });
+    config.module.rules.push({
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+            fallback: "style",
+            use: ["css", "postcss-loader"]
+        })
+    });
+    config.module.rules.push({
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+            fallback: "style",
+            use: ["css", "postcss-loader", "sass"]
+        })
+    });
 
-    // config.plugins.push(new ExtractTextPlugin("[name].[contenthash].css", { allChunks: true }));
+    config.plugins.push(new ExtractTextPlugin({
+        filename: "[name].[contenthash].css",
+        allChunks: true,
+        disable: false
+    }));
     config.plugins.push(new webpack.DefinePlugin({
         "process.env": {
             "NODE_ENV": JSON.stringify("production")
         }
     }));
     config.plugins.push(new webpack.optimize.UglifyJsPlugin());
-    config.plugins.push(new webpack.optimize.DedupePlugin());
 }
 
 module.exports = config;
