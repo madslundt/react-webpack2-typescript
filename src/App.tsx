@@ -23,7 +23,10 @@ export default class App extends React.Component <void, void> {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <Router>
-          <Route path="/" component={Todo}/>
+          <div>
+            <Route exact path="/" component={Todo}/>
+            <Route path="/counter" component={Counter}/>
+          </div>
         </Router>
       </MuiThemeProvider>
     );

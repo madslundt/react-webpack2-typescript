@@ -52,13 +52,15 @@ let config = {
       }
     ]
   },
-  plugins: [new HtmlWebpackPlugin({
+  plugins: [
+    new HtmlWebpackPlugin({
       filename: "index.html",
       template: "./src/index.html",
       minify: {
         removeComments: true
       }
-    })]
+    })
+  ]
 };
 
 if (isHotMode) {
@@ -102,7 +104,14 @@ if (isDevelopment) {
   config.devServer = {
     publicPath: "http://localhost:" + hotPort + "/dist/",
     contentBase: path.resolve("./dist"),
-    port: hotPort
+    port: hotPort,
+    quiet: false,
+    noInfo: false,
+    historyApiFallback: true,
+    hot: true,
+    stats: {
+      colors: true
+    }
   };
 
   config

@@ -30,3 +30,4 @@ chrome-user-data
 *.iml
 .vscode
 /dist
+yarn.lock
