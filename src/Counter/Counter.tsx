@@ -1,4 +1,5 @@
 import * as React from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
 
 export class Counter extends React.Component<void, { number: number }> {
     constructor() {
@@ -23,7 +24,7 @@ export class Counter extends React.Component<void, { number: number }> {
 
     render() {
         return (
-            <div>{ this.state.number }</div>
+            <RaisedButton label={ this.state.number } />
         );
     }
 }
