@@ -112,6 +112,10 @@ if (isDevelopment) {
 }
 
 if (isProduction) {
+    config.resolve.alias = {
+        "react": "preact-compat",
+        "react-dom": "preact-compat"
+    };
     config.output.filename = "[name].[chunkhash].js";
 
     config
