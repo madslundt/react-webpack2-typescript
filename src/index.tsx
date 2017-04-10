@@ -2,7 +2,6 @@ import * as React from 'react';
 import { render} from 'react-dom';
 import { Store, createStore } from 'redux';
 import { Provider } from 'react-redux';
-import routes from './routes';
 import { Router, Route } from 'react-router';
 import reducer from './rootReducers';
 import App from './App';
