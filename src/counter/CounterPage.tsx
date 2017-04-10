@@ -30,7 +30,7 @@ const mapStateToProps = (state: IReducers) => {
     return state.counters;
 }
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch<{}>) => {
     return bindActionCreators(CounterActions, dispatch);
 }
 
