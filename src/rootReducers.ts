@@ -1,8 +1,13 @@
 import { combineReducers } from 'redux'
-import todo from './todo/TodoReducer'
-import counter from './counter/CounterReducer'
+import todos from './todo/TodoReducer'
+import counters from './counter/CounterReducer'
+import CounterActions from './counter/CounterActions';
+
+export interface IReducers {
+  counters: typeof CounterActions
+}
 
 export default combineReducers({
-  todo,
-  counter
+  todos,
+  counters
 });

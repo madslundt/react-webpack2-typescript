@@ -3,6 +3,7 @@ import { connect, Dispatch } from 'react-redux'
 import CounterActions from './CounterActions'
 import Counter, { IState } from './Counter'
 import { bindActionCreators } from "redux";
+import { IReducers } from "../rootReducers";
 
 interface props {
     number: number;
@@ -25,8 +26,8 @@ export class CounterPage extends React.Component<props, void> {
     }
 }
 
-const mapStateToProps = (state: any) => {
-    return state.counter;
+const mapStateToProps = (state: IReducers) => {
+    return state.counters;
 }
 
 const mapDispatchToProps = (dispatch: any) => {
