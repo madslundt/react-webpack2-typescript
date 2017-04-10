@@ -25,11 +25,11 @@ export class CounterPage extends React.Component<props, void> {
     }
 }
 
-function mapStateToProps(state: any) {
+const mapStateToProps = (state: any) => {
     return state.counter;
 }
 
-function mapDispatchToProps(dispatch: any) {
+const mapDispatchToProps = (dispatch: any) => {
     return bindActionCreators(CounterActions, dispatch);
 }
 
