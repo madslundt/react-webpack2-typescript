@@ -9,14 +9,14 @@ export interface IState {
     number: number
 };
 
-interface CounterProps {
-    number: number;
+export interface IProps {
+    readonly number: number;
     increment(): void;
     decrement(): void;
 }
 
 // Dumb/stateless component
-const Counter = (props: CounterProps) => {
+const Counter = (props: IProps) => {
     const { number, increment, decrement } = props;
     return (
         <div>
