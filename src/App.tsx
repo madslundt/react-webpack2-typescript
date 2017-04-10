@@ -1,14 +1,19 @@
 import * as React from 'react';
-import {Todo} from './Todo';
-import {Counter} from './Counter/Counter';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import { Todo } from './todo';
+import { Dispatch } from 'redux';
+import { default as Counter } from './counter/CounterPage';
+import { default as CounterActions } from './counter/CounterActions';
+import { Router, Route } from 'react-router';
 import * as injectTapEventPlugin from 'react-tap-event-plugin';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {green100, green500, green700} from 'material-ui/styles/colors';
+import { green100, green500, green700 } from 'material-ui/styles/colors';
+import createBrowserHistory from 'history/createBrowserHistory';
 
 // Needed for onTouchTap http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
+
+const history = createBrowserHistory()
 
 const muiTheme = getMuiTheme({
     palette: {
@@ -18,12 +23,11 @@ const muiTheme = getMuiTheme({
     }
 });
 
-export default class App extends React.Component < void,
-void > {
+export default class App extends React.Component <void, void> {
     render() {
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
-                <Router>
+                <Router history={history}>
                     <div>
                         <Route exact path="/" component={Todo}/>
                         <Route path="/counter" component={Counter}/>

@@ -1,17 +1,21 @@
 import * as React from 'react';
-import {render} from 'react-dom';
-import {Store, createStore} from 'redux';
-import {Provider} from 'react-redux';
+import { render} from 'react-dom';
+import { Store, createStore } from 'redux';
+import { Provider } from 'react-redux';
+import routes from './routes';
+import { Router, Route } from 'react-router';
+import reducer from './rootReducers';
 import App from './App';
-import reducer from './rootReducers'
 
 const initialState = {};
 
 const store: Store<any> = createStore(reducer, initialState);
 
+
+
 render(
     <Provider store={store}>
-        <App/>
+        <App />
     </Provider>,
     document.getElementById('app')
 );

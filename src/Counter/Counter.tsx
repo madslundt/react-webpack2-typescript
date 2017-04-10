@@ -1,29 +1,30 @@
 import * as React from 'react';
+import { bindActionCreators, Dispatch } from 'redux';
+import { connect } from 'react-redux';
+import { Action } from 'redux-actions';
+import CounterActions from './CounterActions';
 import RaisedButton from 'material-ui/RaisedButton';
 
-export class Counter extends React.Component <void, {number : number}> {
-    constructor() {
-        super();
-        this.state = {
-            number: 0
-        };
+export interface IState {
+    number: number
+};
 
-        this.increment = this
-            .increment
-            .bind(this)
-    }
-
-    componentDidMount() {
-        setInterval(this.increment, 1000);
-    }
-
-    increment() {
-        this.setState({
-            number: this.state.number + 1
-        });
-    }
-
-    render() {
-        return <RaisedButton label={this.state.number}/>;
-    }
+interface CounterProps {
+    number: number;
+    increment(): void;
+    decrement(): void;
 }
+
+// Dumb/stateless component
+const Counter = (props: CounterProps) => {
+    const { number, increment, decrement } = props;
+    return (
+        <div>
+            <p>Counter: {number}</p>
+            <RaisedButton onClick={increment} label="Increment" />
+            <RaisedButton onClick={decrement} label="Decrement" />
+        </div>
+    );
+}
+
+export default Counter;
