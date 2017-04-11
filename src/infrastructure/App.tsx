@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Dispatch } from 'redux';
-import { default as Counter } from './counter/CounterPage';
+import { default as Counter } from '../counter/CounterPage';
 import { Router, Route } from 'react-router';
 import * as injectTapEventPlugin from 'react-tap-event-plugin';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';

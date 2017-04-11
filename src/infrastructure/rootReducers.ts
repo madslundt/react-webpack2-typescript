@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import counters from './counter/CounterReducer'
-import CounterActions from './counter/CounterActions';
+import counters from '../counter/CounterReducer'
+import CounterActions from '../counter/CounterActions';
 
 export interface IReducers {
   counters: typeof CounterActions

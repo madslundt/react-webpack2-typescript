@@ -3,7 +3,8 @@ import { connect, Dispatch } from 'react-redux'
 import CounterActions from './CounterActions'
 import Counter from './Counter'
 import { bindActionCreators } from "redux";
-import { IReducers } from "../rootReducers";
+import { IReducers } from "../infrastructure/rootReducers";
+import styled from "styled-components";
 
 interface IProps {
     number: number;
