@@ -19,7 +19,6 @@ export interface IProps {
 const Counter = (props: IProps) => {
     const { number, increment, decrement } = props;
 
-    console.log(props);
     return (
         <div>
             <p>Counter: {number}</p>

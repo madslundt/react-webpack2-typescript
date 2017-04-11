@@ -3,7 +3,7 @@ import { INCREMENT, DECREMENT } from "./CounterActions";
 import { IState } from "./Counter";
 
 const initialState: IState = {
-    number: 0
+    number: 5
 };
 
 export default handleActions<IState, void>({

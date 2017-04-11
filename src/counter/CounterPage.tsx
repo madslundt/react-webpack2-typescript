@@ -10,7 +10,7 @@ interface IProps {
     actions: typeof CounterActions
 }
 
-
+// Smart/statefull component
 export class CounterPage extends React.Component<IProps, void> {
     constructor(props: IProps) {
         super(props);
@@ -20,7 +20,6 @@ export class CounterPage extends React.Component<IProps, void> {
     }
 
     increment() {
-        console.log('Counter page increment');
         this.props.actions.increment();
     }
     decrement() {
@@ -29,8 +28,10 @@ export class CounterPage extends React.Component<IProps, void> {
 
     render() {
         const { number } = this.props;
+
         return (
             <div>
+                <p>This is a counter!</p>
                 <Counter
                     number={number}
                     increment={this.increment}

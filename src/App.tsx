@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Todo } from './todo';
 import { Dispatch } from 'redux';
 import { default as Counter } from './counter/CounterPage';
 import { Router, Route } from 'react-router';
@@ -28,7 +27,7 @@ export default class App extends React.Component <void, void> {
             <MuiThemeProvider muiTheme={muiTheme}>
                 <Router history={history}>
                     <div>
-                        <Route exact path="/" component={Todo}/>
+                        <Route exact path="/" component={Counter}/>
                         <Route path="/counter" component={Counter}/>
                     </div>
                 </Router>

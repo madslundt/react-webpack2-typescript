@@ -6,7 +6,7 @@ import reducer from './rootReducers';
 import App from './App';
 import configureStore from './configureStore';
 
-const store = configureStore({});
+const store = configureStore();
 
 render(
     <Provider store={store}>
