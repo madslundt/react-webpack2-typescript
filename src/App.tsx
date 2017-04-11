@@ -21,7 +21,7 @@ const muiTheme = getMuiTheme({
     }
 });
 
-export default class App extends React.Component <void, void> {
+export default class App extends React.Component<any, any> {
     render() {
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
