@@ -5,21 +5,36 @@ import Counter, { IState } from './Counter'
 import { bindActionCreators } from "redux";
 import { IReducers } from "../rootReducers";
 
-interface props {
+interface IProps {
     number: number;
-    dispatch: Dispatch<{}>
+    actions: typeof CounterActions
 }
 
 
-export class CounterPage extends React.Component<props, void> {
+export class CounterPage extends React.Component<IProps, void> {
+    constructor(props: IProps) {
+        super(props);
+
+        this.increment = this.increment.bind(this);
+        this.decrement = this.decrement.bind(this);
+    }
+
+    increment() {
+        console.log('Counter page increment');
+        this.props.actions.increment();
+    }
+    decrement() {
+        this.props.actions.decrement();
+    }
+
     render() {
-        const { number, dispatch } = this.props;
+        const { number } = this.props;
         return (
             <div>
                 <Counter
                     number={number}
-                    increment={() => dispatch(CounterActions.increment())}
-                    decrement={() => dispatch(CounterActions.decrement())}
+                    increment={this.increment}
+                    decrement={this.decrement}
                 />
             </div>
         )
@@ -31,7 +46,9 @@ const mapStateToProps = (state: IReducers) => {
 }
 
 const mapDispatchToProps = (dispatch: Dispatch<{}>) => {
-    return bindActionCreators(CounterActions, dispatch);
+    return {
+        actions: bindActionCreators(CounterActions, dispatch)
+    };
 }
 
-export default connect<any, any, any>(mapStateToProps, mapDispatchToProps)(Counter);
+export default connect<any, any, any>(mapStateToProps, mapDispatchToProps)(CounterPage);

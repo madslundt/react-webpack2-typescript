@@ -18,6 +18,8 @@ export interface IProps {
 // Dumb/stateless component
 const Counter = (props: IProps) => {
     const { number, increment, decrement } = props;
+
+    console.log(props);
     return (
         <div>
             <p>Counter: {number}</p>
