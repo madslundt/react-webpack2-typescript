@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect, Dispatch } from 'react-redux'
 import CounterActions from './CounterActions'
-import Counter, { IState } from './Counter'
+import Counter from './Counter'
 import { bindActionCreators } from "redux";
 import { IReducers } from "../rootReducers";
 

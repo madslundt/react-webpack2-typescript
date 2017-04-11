@@ -6,11 +6,10 @@ import CounterActions from './CounterActions';
 import RaisedButton from 'material-ui/RaisedButton';
 
 export interface IState {
-    number: number
+    readonly number: number
 };
 
-export interface IProps {
-    readonly number: number;
+export interface IProps extends IState {
     increment(): void;
     decrement(): void;
 }
