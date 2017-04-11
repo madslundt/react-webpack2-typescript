@@ -51,6 +51,7 @@
     "typescript": "^2.3.0",
     "webpack": "2.3.3",
     "webpack-dev-server": "^2.4.2",
+    "webpack-merge": "^4.1.0",
     "write-file-webpack-plugin": "^4.0.0"
   },
   "-vs-binding": {
