@@ -5,6 +5,7 @@ import { Router, Route } from 'react-router';
 import reducer from './infrastructure/rootReducers';
 import App from './infrastructure/App';
 import configureStore from './infrastructure/configureStore';
+require('./common/reset.scss');
 
 const store = configureStore();
 
