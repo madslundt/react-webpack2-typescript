@@ -1,8 +1,4 @@
 import * as React from 'react';
-import { bindActionCreators, Dispatch } from 'redux';
-import { connect } from 'react-redux';
-import { Action } from 'redux-actions';
-import CounterActions from './CounterActions';
 import RaisedButton from 'material-ui/RaisedButton';
 
 export interface IState {
