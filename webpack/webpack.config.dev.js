@@ -18,7 +18,7 @@ const config = {
                 use: ['react-hot-loader', 'awesome-typescript-loader']
             },
             {
-                test: /\.(png|woff|woff2|eot|ttf|svg|gif)(\?.+)?(#.+)?$/,
+                test: /\.(png|jpg|woff|woff2|eot|ttf|svg|gif)(\?.+)?(#.+)?$/,
                 use: ["url-loader?limit=100000"]
             }
         ]

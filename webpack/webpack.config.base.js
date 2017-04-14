@@ -1,5 +1,6 @@
 const path              = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const StyleLintPlugin   = require('stylelint-webpack-plugin');
 
 const config = {
     entry: ["./src/index"],
@@ -24,16 +25,38 @@ const config = {
                 test: /\.tsx?$/,
                 use: ['source-map-loader']
             }, {
-                test: /\.css$/,
-                use: ["style-loader", "css-loader", "postcss-loader"]
-            }, {
-                test: /\.scss$/,
-                use: ["style-loader", "css-loader", "postcss-loader", "sass"]
+                test: /\.s?css$/,
+                use: [
+                    {
+                        loader: "style-loader"
+                    }, {
+                        loader: "css-loader"
+                     }, {
+                        loader: "postcss-loader",
+                        options: {
+                            plugins: function() {
+                                return [
+                                    require('postcss-smart-import')({ /* ...options */ }),
+                                    require('autoprefixer')({ /* ...options */ }),
+                                    require('precss')({ /* ...options */ }),
+                                    require('doiuse')({ browsers:['ie >= 9', '> 1%'], }),
+                                    require('colorguard')({ /* ...options */ }),
+                                    require('postcss-unique-selectors')({ /* ...options */ }),
+                                    require("postcss-reporter")({ clearMessages: true })
+                                ];
+                            }
+                        }
+                    }, {
+                        loader: "sass-loader"
+                    }
+                ]
             }
         ]
     },
-    // postcss: [autoprefixer],
     plugins: [
+        new StyleLintPlugin({
+            configFile: './webpack/stylelint.config.js'
+        }),
         new HtmlWebpackPlugin({
             filename: "index.html",
             template: "./src/index.html",
