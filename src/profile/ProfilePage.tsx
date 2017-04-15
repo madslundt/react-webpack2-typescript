@@ -7,7 +7,7 @@ import { bindActionCreators } from "redux";
 import { IReducers } from "../infrastructure/rootReducers";
 import styled from "styled-components";
 import { IProfileApi } from "./ProfileMockApi";
-import ProfileActions from "./ProfileActions";
+import ProfileActions, { IProfileActions } from "./ProfileActions";
 
 interface IState {
     profile: IProfileApi
@@ -16,7 +16,7 @@ interface IState {
 
 interface IProps extends RouteComponentProps<{id: string}> {
     profile: IProfileApi
-    actions: typeof ProfileActions
+    actions: IProfileActions
 }
 
 // Smart/statefull component
@@ -32,7 +32,9 @@ export class ProfilePage extends React.Component<IProps, IState> {
 
     componentWillMount() {
         const profileId = this.props.match.params.id;
-        this.props.actions.loadProfile(profileId);
+        this.props.actions.loadProfile(profileId).then(() => {
+            document.title = `${this.props.profile.firstName}`;
+        });
     }
 
     componentWillReceiveProps(nextProps: IProps) {

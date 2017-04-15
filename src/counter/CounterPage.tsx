@@ -20,6 +20,10 @@ export class CounterPage extends React.Component<IProps, void> {
         this.decrement = this.decrement.bind(this);
     }
 
+    componentDidMount() {
+        document.title = 'Counter';
+    }
+
     increment() {
         this.props.actions.increment();
     }

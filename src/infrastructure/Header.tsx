@@ -7,7 +7,6 @@ const Nav = styled.nav`
 `;
 
 const Header = () => {
-
     return (
         <Nav>
 

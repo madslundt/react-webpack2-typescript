@@ -18,7 +18,7 @@ const profile : IProfileApi = {
 
 class ProfileApi {
     static getProfile(id: string): Promise<IProfileApi> {
-        return new Promise<IProfileApi>((resolve : any, reject : any) => {
+        return new Promise<IProfileApi>((resolve, reject) => {
             setTimeout(() => {
                 if (id === profile.id) {
                     resolve(profile);

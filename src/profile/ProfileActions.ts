@@ -20,6 +20,11 @@ const loadProfile = (id: string) => (dispatch: Dispatch<IProfileApi>) => {
         dispatch(ajaxCallError(error));
         throw(error);
     });
+};
+
+export interface IProfileActions {
+    loadProfileSuccess: typeof loadProfileSuccess,
+    loadProfile(id: string): Promise<IProfileApi>
 }
 
 export default {
