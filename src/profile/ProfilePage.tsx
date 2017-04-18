@@ -8,10 +8,11 @@ import { IReducers } from "../infrastructure/rootReducers";
 import styled from "styled-components";
 import { IProfileApi } from "./ProfileMockApi";
 import ProfileActions, { IProfileActions } from "./ProfileActions";
+import NotFound from "../infrastructure/404";
+import { isEmpty } from 'lodash';
 
 interface IState {
-    profile: IProfileApi
-    errors: any
+    error: any
 }
 
 interface IProps extends RouteComponentProps<{id: string}> {
@@ -21,35 +22,47 @@ interface IProps extends RouteComponentProps<{id: string}> {
 
 // Smart/statefull component
 export class ProfilePage extends React.Component<IProps, IState> {
-    constructor(props: IProps) {
-        super(props);
+    constructor(props: IProps, context: any) {
+        super(props, context);
 
         this.state = {
-            profile: this.props.profile,
-            errors: {}
+            error: {}
         };
+
+        this.renderProfile = this.renderProfile.bind(this);
     }
 
     componentWillMount() {
         const profileId = this.props.match.params.id;
         this.props.actions.loadProfile(profileId).then(() => {
             document.title = `${this.props.profile.firstName}`;
+        }).catch(error => {
+            this.setState({
+                error: error
+            });
         });
     }
 
-    componentWillReceiveProps(nextProps: IProps) {
-        const profileId = this.props.match.params.id;
-        if (profileId !== nextProps.match.params.id) {
-            // this.props.actions.loadProfile(profileId);
-            this.setState({
-                profile: nextProps.profile
-            });
+    renderProfile(profile: IProfileApi) {
+        const { error } = this.state;
+
+        console.log('error', error);
+
+        if (!isEmpty(profile) && isEmpty(error)) {
+            return (
+                <div>
+                    <ProfileImage src={profile.profileImage} />
+                    <ProfileName firstName={profile.firstName} lastName={profile.lastName} />
+                </div>
+            );
+        } else if (!isEmpty(error)) {
+            return <NotFound />;
         }
     }
 
 
     render() {
-        const { profileImage, firstName, lastName } = this.props.profile;
+        const { profile } = this.props;
 
         const Container = styled.div`
             width: 100px;
@@ -61,8 +74,7 @@ export class ProfilePage extends React.Component<IProps, IState> {
 
         return (
             <Container>
-                <ProfileImage src={profileImage} />
-                <ProfileName firstName={firstName} lastName={lastName} />
+                {this.renderProfile(profile)}
             </Container>
         )
     }

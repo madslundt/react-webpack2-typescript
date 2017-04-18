@@ -7,14 +7,12 @@ export const LOAD_PROFILE_SUCCESS = "LOAD_PROFILE_SUCCESS";
 
 const loadProfileSuccess = createAction<IProfileApi, IProfileApi>(
   LOAD_PROFILE_SUCCESS,
-  (profile: IProfileApi) => {
-      return profile;
-  }
+  (profile: IProfileApi) => profile
 );
 
 const loadProfile = (id: string) => (dispatch: Dispatch<IProfileApi>) => {
     dispatch(beginAjaxCall());
-    return profileApi.getProfile(id).then(profile  => {
+    return profileApi.getProfile(id).then(profile => {
         dispatch(loadProfileSuccess(profile));
     }).catch(error => {
         dispatch(ajaxCallError(error));
@@ -24,7 +22,7 @@ const loadProfile = (id: string) => (dispatch: Dispatch<IProfileApi>) => {
 
 export interface IProfileActions {
     loadProfileSuccess: typeof loadProfileSuccess,
-    loadProfile(id: string): Promise<IProfileApi>
+    loadProfile(id: string): Promise<void>
 }
 
 export default {
