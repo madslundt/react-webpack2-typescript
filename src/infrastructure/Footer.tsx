@@ -5,6 +5,7 @@ const Container = styled.footer`
     width: 100%;
     padding: 10px;
     text-align: center;
+    box-sizing: border-box;
 `;
 
 const Footer = () => {

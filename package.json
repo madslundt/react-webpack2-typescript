@@ -9,6 +9,7 @@
   "author": "Mads Engel Lundt",
   "license": "MIT",
   "dependencies": {
+    "lodash": "^4.17.4",
     "material-ui": "^0.17.3",
     "postcss-smart-import": "^0.6.11",
     "preact": "^7.2.1",
@@ -23,9 +24,8 @@
     "redux": "^3.6.0",
     "redux-actions": "^2.0.1",
     "redux-logger": "^3.0.1",
-    "styled-components": "^1.4.4",
     "redux-thunk": "^2.2.0",
-    "redux-api-middleware": "^1.0.2"
+    "styled-components": "^1.4.4"
   },
   "devDependencies": {
     "@types/material-ui": "^0.16.60",
@@ -38,6 +38,7 @@
     "@types/redux-actions": "^1.2.3",
     "@types/redux-logger": "^3.0.0",
     "@types/redux-thunk": "^2.1.0",
+    "@types/lodash": "^4.14.62",
     "autoprefixer": "^6.7.7",
     "awesome-typescript-loader": "^3.1.2",
     "chancejs": "^0.0.8",
