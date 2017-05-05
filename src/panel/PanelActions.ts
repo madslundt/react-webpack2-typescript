@@ -4,7 +4,7 @@ import { IInfoEntities, info } from './api/PanelSchema';
 import { Dispatch } from 'react-redux';
 import PanelApi from './api/PanelMock';
 import { IPanelInfoApi } from './api/PanelModel';
-import { startLoading } from '../infrastructure/api/loadingActions';
+import { startLoading } from '../loading/LoadingActions';
 
 export const LOAD_PANEL_INFO_REQUEST = "LOAD_PANEL_INFO_REQUEST";
 export const LOAD_PANEL_INFO_SUCCESS  = "LOAD_PANEL_INFO_SUCCESS";

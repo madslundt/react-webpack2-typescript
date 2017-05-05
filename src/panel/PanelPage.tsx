@@ -112,7 +112,7 @@ export class PanelPage extends React.Component<IProps, IState> {
                     </CategoryContainer>
                 )}
 
-                <RelationContainer active={currentIndex === categories.length}>
+                <RelationContainer active={categories.length && currentIndex === categories.length}>
                     <Relation
                         relations={relations}
                         selectedRelation={this.state.selectedRelation}

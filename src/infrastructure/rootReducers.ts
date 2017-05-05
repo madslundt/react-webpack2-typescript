@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import counters from '../counter/CounterReducer';
 import profiles from '../profile/ProfileReducer';
 import panels from '../panel/PanelReducer';
-import loadingProgress, { IState as loadingProgressState } from './api/loadingReducer';
+import loadingProgress, { IState as loadingProgressState } from '../loading/LoadingReducer';
 import CounterActions from '../counter/CounterActions';
 import ProfileActions from '../profile/ProfileActions';
 

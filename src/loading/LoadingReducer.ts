@@ -1,5 +1,5 @@
 import { Action } from "redux-actions";
-import { START_LOADING } from "./loadingActions";
+import { START_LOADING } from "./LoadingActions";
 
 export interface IState {
     number: number,

@@ -1,4 +1,4 @@
-import Loader from './Loader';
+import Loading from '../loading/Loading';
 import Header from './Header';
 import Footer from './Footer';
 import { IReducers } from './rootReducers';
@@ -22,12 +22,12 @@ const muiTheme = getMuiTheme({
 });
 
 interface IProps {
-    loaders: number
+    loadings: number
 }
 
 export class App extends React.Component<IProps, any> {
     render() {
-        const { loaders } = this.props;
+        const { loadings } = this.props;
 
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
@@ -35,7 +35,7 @@ export class App extends React.Component<IProps, any> {
                     <Header />
                     <Routes />
                     <Footer />
-                    <Loader loaders={loaders} />
+                    <Loading loadings={loadings} />
                 </div>
             </MuiThemeProvider>
         );
@@ -44,7 +44,7 @@ export class App extends React.Component<IProps, any> {
 
 const mapStateToProps = (state: IReducers) => {
     return {
-        loaders: state.loadingProgress.number
+        loadings: state.loadingProgress.number
     };
 }
 

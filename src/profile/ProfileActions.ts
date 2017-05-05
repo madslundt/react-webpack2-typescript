@@ -1,7 +1,7 @@
 import { createAction } from 'redux-actions';
 import { Dispatch } from 'react-redux';
 import profileApi, { IProfileApi } from './ProfileMockApi';
-import { startLoading } from '../infrastructure/api/loadingActions';
+import { startLoading } from '../loading/LoadingActions';
 
 export const LOAD_PROFILE_SUCCESS = "LOAD_PROFILE_SUCCESS";
 

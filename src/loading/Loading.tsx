@@ -3,10 +3,10 @@ import styled, { keyframes, ThemedStyledProps } from 'styled-components';
 import { panel } from '../common/colors';
 
 export interface IProps {
-    loaders: number
+    loadings: number
 }
 
-type LoaderProps = ThemedStyledProps<{show: boolean}, any>;
+type LoadingProps = ThemedStyledProps<{show: boolean}, any>;
 
 const Container = styled.div`
     position: fixed;
@@ -23,8 +23,8 @@ const Container = styled.div`
     margin: 0 auto;
 
     z-index: 999999;
-    opacity: ${(props: LoaderProps) => props.show ? 1 : 0};
-    visibility: ${(props: LoaderProps) => props.show ? 'visible' : 'hidden'};
+    opacity: ${(props: LoadingProps) => props.show ? 1 : 0};
+    visibility: ${(props: LoadingProps) => props.show ? 'visible' : 'hidden'};
 ` as ThemedStyledProps<any, {show: boolean}>;
 
 const animation = keyframes`
@@ -87,11 +87,11 @@ const BallPulse = styled.div`
 `;
 
 // Dumb/stateless component
-const Loader = (props: IProps) => {
-    const { loaders } = props;
+const Loading = (props: IProps) => {
+    const { loadings } = props;
 
     return (
-        <Container show={loaders > 0}>
+        <Container show={loadings > 0}>
             <BallPulse>
                 <div></div>
                 <div></div>
@@ -103,4 +103,4 @@ const Loader = (props: IProps) => {
     )
 }
 
-export default Loader;
+export default Loading;
