@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --hot --color",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --hot --color",
     "prod": "cross-env NODE_ENV=production webpack"
   },
   "author": "Mads Engel Lundt",
