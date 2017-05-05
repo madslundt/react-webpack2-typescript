@@ -11,7 +11,7 @@ interface IProps {
     actions: typeof CounterActions
 }
 
-// Smart/statefull component
+// Smart/stateful component
 export class CounterPage extends React.Component<IProps, void> {
     constructor(props: IProps) {
         super(props);
