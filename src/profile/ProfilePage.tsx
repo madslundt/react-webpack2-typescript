@@ -1,4 +1,5 @@
-import * as React from 'react'
+import Panel from '../panel/PanelPage';
+import * as React from 'react';
 import { connect, Dispatch } from 'react-redux'
 import ProfileImage from './ProfileImage'
 import ProfileName from './ProfileName'
@@ -46,8 +47,6 @@ export class ProfilePage extends React.Component<IProps, IState> {
     renderProfile(profile: IProfileApi) {
         const { error } = this.state;
 
-        console.log('error', error);
-
         if (!isEmpty(profile) && isEmpty(error)) {
             return (
                 <div>
@@ -65,7 +64,7 @@ export class ProfilePage extends React.Component<IProps, IState> {
         const { profile } = this.props;
 
         const Container = styled.div`
-            width: 100px;
+            width: 500px;
             text-align: center;
             &>p {
                 margin: 0;
@@ -75,6 +74,8 @@ export class ProfilePage extends React.Component<IProps, IState> {
         return (
             <Container>
                 {this.renderProfile(profile)}
+
+                <Panel profile={profile} />
             </Container>
         )
     }

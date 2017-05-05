@@ -1,7 +1,7 @@
 import { createAction } from 'redux-actions';
 import { Dispatch } from 'react-redux';
 import profileApi, { IProfileApi } from './ProfileMockApi';
-import { beginAjaxCall, ajaxCallError } from '../infrastructure/api/ajaxStatusActions';
+import { startLoading } from '../infrastructure/api/loadingActions';
 
 export const LOAD_PROFILE_SUCCESS = "LOAD_PROFILE_SUCCESS";
 
@@ -11,11 +11,10 @@ const loadProfileSuccess = createAction<IProfileApi, IProfileApi>(
 );
 
 const loadProfile = (id: string) => (dispatch: Dispatch<IProfileApi>) => {
-    dispatch(beginAjaxCall());
+    dispatch(startLoading(LOAD_PROFILE_SUCCESS));
     return profileApi.getProfile(id).then(profile => {
         dispatch(loadProfileSuccess(profile));
     }).catch(error => {
-        dispatch(ajaxCallError(error));
         throw(error);
     });
 };

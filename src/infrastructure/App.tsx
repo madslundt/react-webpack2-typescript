@@ -44,7 +44,7 @@ export class App extends React.Component<IProps, any> {
 
 const mapStateToProps = (state: IReducers) => {
     return {
-        loaders: state.ajaxCallsInProgressCount
+        loaders: state.loadingProgress.number
     };
 }
 

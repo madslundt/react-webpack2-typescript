@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { keyframes, ThemedStyledProps } from 'styled-components';
-import { praicePanel } from '../common/colors';
+import { panel } from '../common/colors';
 
 export interface IProps {
     loaders: number
@@ -63,23 +63,23 @@ const BallPulse = styled.div`
         animation: ${animation} 1s ease infinite;
 
         &:nth-child(1) {
-            color: ${praicePanel.colorCategory1};
+            color: ${panel.colorCategory1};
             animation-delay: -400ms;
         }
         &:nth-child(2) {
-            color: ${praicePanel.colorCategory2};
+            color: ${panel.colorCategory2};
             animation-delay: -300ms;
         }
         &:nth-child(3) {
-            color: ${praicePanel.colorCategory3};
+            color: ${panel.colorCategory3};
             animation-delay: -200ms;
         }
         &:nth-child(4) {
-            color: ${praicePanel.colorCategory4};
+            color: ${panel.colorCategory4};
             animation-delay: -100ms;
         }
         &:nth-child(5) {
-            color: ${praicePanel.colorCategory5};
+            color: ${panel.colorCategory5};
             animation-delay: 0ms;
         }
     }

@@ -3,9 +3,7 @@ import logger from 'redux-logger';
 import reducer from './rootReducers';
 import thunk from 'redux-thunk';
 
-const initialState: any = {
-    ajaxCallsInProgressCount: 0
-};
+const initialState: any = {};
 
 const store = (): Store<any> => {
     return createStore(

@@ -1,4 +1,4 @@
-export const praicePanel = {
+export const panel = {
     colorCategory1:        '#666261',
     colorCategory1Light:   '#d2d2d1',
     colorCategory2:        '#0b808f',
