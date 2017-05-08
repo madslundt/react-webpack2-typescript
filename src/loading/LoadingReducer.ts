@@ -23,6 +23,7 @@ const getFeatureString = (type: string | undefined): string => {
 
 const handleActions: any = (state = initialState, action: Action<string>) => {
     const actionType = getFeatureString(action.type);
+    console.log(actionType, action.type);
 
     if (action.type === START_LOADING) {
         const actionPayload = getFeatureString(action.payload);

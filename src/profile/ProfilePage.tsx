@@ -13,6 +13,7 @@ import NotFound from "../infrastructure/404";
 import { isEmpty } from 'lodash';
 
 interface IState {
+    success: Boolean,
     error: any
 }
 
@@ -27,15 +28,17 @@ export class ProfilePage extends React.Component<IProps, IState> {
         super(props, context);
 
         this.state = {
+            success: false,
             error: {}
         };
-
-        this.renderProfile = this.renderProfile.bind(this);
     }
 
     componentWillMount() {
         const profileId = this.props.match.params.id;
         this.props.actions.loadProfile(profileId).then(() => {
+            this.setState({
+                success: true
+            });
             document.title = `${this.props.profile.firstName}`;
         }).catch(error => {
             this.setState({
@@ -43,22 +46,6 @@ export class ProfilePage extends React.Component<IProps, IState> {
             });
         });
     }
-
-    renderProfile(profile: IProfileApi) {
-        const { error } = this.state;
-
-        if (!isEmpty(profile) && isEmpty(error)) {
-            return (
-                <div>
-                    <ProfileImage src={profile.profileImage} />
-                    <ProfileName firstName={profile.firstName} lastName={profile.lastName} />
-                </div>
-            );
-        } else if (!isEmpty(error)) {
-            return <NotFound />;
-        }
-    }
-
 
     render() {
         const { profile } = this.props;
@@ -71,13 +58,22 @@ export class ProfilePage extends React.Component<IProps, IState> {
             }
         `;
 
-        return (
-            <Container>
-                {this.renderProfile(profile)}
+        if (this.state.success) {
+            return (
+                <Container>
+                    <div>
+                        <ProfileImage src={profile.profileImage} />
+                        <ProfileName firstName={profile.firstName} lastName={profile.lastName} />
+                    </div>
 
-                <Panel profile={profile} />
-            </Container>
-        )
+                    <Panel profile={profile} />
+                </Container>
+            );
+        } else if (!isEmpty(this.state.error)) {
+            return <NotFound />;
+        } else {
+            return <Container />;
+        }
     }
 }
 
