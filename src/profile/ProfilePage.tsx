@@ -7,44 +7,27 @@ import { RouteComponentProps } from 'react-router'
 import { bindActionCreators } from "redux";
 import { IReducers } from "../infrastructure/rootReducers";
 import styled from "styled-components";
-import { IProfileApi } from "./ProfileMockApi";
+import { IProfile } from "./ProfileReducer";
 import ProfileActions, { IProfileActions } from "./ProfileActions";
 import NotFound from "../infrastructure/404";
 import { isEmpty } from 'lodash';
 
-interface IState {
-    success: Boolean,
-    error: any
-}
-
 interface IProps extends RouteComponentProps<{id: string}> {
-    profile: IProfileApi
+    profile: IProfile
     actions: IProfileActions
 }
 
 // Smart/statefull component
-export class ProfilePage extends React.Component<IProps, IState> {
+export class ProfilePage extends React.Component<IProps, void> {
     constructor(props: IProps, context: any) {
         super(props, context);
-
-        this.state = {
-            success: false,
-            error: {}
-        };
     }
 
     componentWillMount() {
         const profileId = this.props.match.params.id;
         this.props.actions.loadProfile(profileId).then(() => {
-            this.setState({
-                success: true
-            });
             document.title = `${this.props.profile.firstName}`;
-        }).catch(error => {
-            this.setState({
-                error: error
-            });
-        });
+        })
     }
 
     render() {
@@ -58,7 +41,7 @@ export class ProfilePage extends React.Component<IProps, IState> {
             }
         `;
 
-        if (this.state.success) {
+        if (!profile.isRequesting && profile.error === null) {
             return (
                 <Container>
                     <div>
@@ -69,7 +52,7 @@ export class ProfilePage extends React.Component<IProps, IState> {
                     <Panel profile={profile} />
                 </Container>
             );
-        } else if (!isEmpty(this.state.error)) {
+        } else if (!profile.isRequesting && profile.error !== null) {
             return <NotFound />;
         } else {
             return <Container />;
