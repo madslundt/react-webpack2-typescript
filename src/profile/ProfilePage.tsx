@@ -18,7 +18,7 @@ interface IProps extends RouteComponentProps<{id: string}> {
 }
 
 // Smart/statefull component
-export class ProfilePage extends React.Component<IProps, void> {
+export class ProfilePage extends React.Component<IProps, {}> {
     constructor(props: IProps, context: any) {
         super(props, context);
     }

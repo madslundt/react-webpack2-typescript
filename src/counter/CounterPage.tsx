@@ -12,7 +12,7 @@ interface IProps {
 }
 
 // Smart/stateful component
-export class CounterPage extends React.Component<IProps, void> {
+export class CounterPage extends React.Component<IProps, {}> {
     constructor(props: IProps) {
         super(props);
 
